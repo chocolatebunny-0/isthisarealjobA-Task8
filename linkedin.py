@@ -370,8 +370,8 @@ if __name__ == '__main__':
 
     if False == False:
 
-        username = 'lexmill99@gmail.com'
-        password = 'akanke1965'
+        username = ''
+        password = ''
         language = 'english'
         position = 'appzone'
         location = 'nigeria'
