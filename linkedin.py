@@ -29,7 +29,7 @@ class EasyApplyBot:
 
         self.language = language
         self.options = self.browser_options()
-        self.browser = webdriver.Chrome(chrome_options=self.options, executable_path = dirpath + "\chromedriver.exe")
+        self.browser = webdriver.Chrome(chrome_options=self.options, executable_path = executable_path="data/chromedriver.exe")
         self.start_linkedin(username,password)
 
 

@@ -16,7 +16,7 @@ import requests
 
 options = webdriver.ChromeOptions()
 options.add_argument('--disable-notifications')
-browser = webdriver.Chrome(executable_path ='chromedriver.exe',chrome_options = options)
+browser = webdriver.Chrome(executable_path ='data/chromedriver.exe',chrome_options = options)
 browser.get('http://publicsearch.cac.gov.ng/ComSearch/index.php')
 browser.find_element_by_tag_name('input').send_keys('appzone')
 
