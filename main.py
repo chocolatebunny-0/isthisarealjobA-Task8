@@ -6,6 +6,7 @@ from flask import request
 from datetime import datetime
 from werkzeug import secure_filename
 from OCR import convert_image_to_test
+from grammatical_error_counter import error_counter
 
 
 app = Flask(__name__)
@@ -17,6 +18,13 @@ def index():
     if email:
         return jsonify(Email=scrape(email))
     return jsonify({'status': 'No email supplied'})
+
+@app.route('/error_counter')
+def counter():
+    msg_body = request.args.get('msg_body', None)
+    if msg_body:
+        return jsonify(Error_Counter=error_counter(msg_body))
+    return jsonify({'status': 'No message body supplied'})
 
 @app.route('/ha')
 def indexa():
