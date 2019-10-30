@@ -15,7 +15,8 @@ def scrape():
      
     # to open chrome webbrowser and maximize the window
 
-    browser = webdriver.Chrome(executable_path="chromedriver.exe", chrome_options=options)
+    browser = webdriver.Chrome(chrome_options=options)
+    #browser = webdriver.Chrome(executable_path="chromedriver.exe", chrome_options=options)
     #browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options = options)
     browser.get("https://verify-email.org/")
     browser.find_element_by_id("email").send_keys(email)
