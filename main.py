@@ -8,6 +8,7 @@ from werkzeug import secure_filename
 from OCR import convert_image_to_test
 from grammatical_error_counter import error_counter
 from addresschecker import address_checker
+from coynamechecker import match_address_name
 
 
 app = Flask(__name__)
@@ -34,10 +35,6 @@ def check_address():
         return jsonify(Check_Address=address_checker(address))
     return jsonify({'status': 'No address supplied'})
 
-"""@app.route('/ha')
-def indexa():
-    return "loooo" """
-
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -45,7 +42,14 @@ def upload():
     filename = os.path.join('files', secure_filename(str(datetime.now()) + '.jpg'))
     f.save(filename)
     return convert_image_to_test(filename)
-    
+ 
+@app.route('/match_name_and_address')
+def match_name_and_address():
+    name = request.args.get('name', None)
+    address = request.args.get('address', None)
+    if name:
+        return jsonify(Match_Name_Address=match_address_name(name, address))
+    return jsonify({'status': 'Name or address not supplied'})
 
 
 if __name__ == "__main__":
