@@ -27,9 +27,8 @@ try:
         coy_address = y[i]['formatted_address']
         print(coy_name)
         print(coy_address) 
-    if name.lower() in coy_name.lower():
-        print('the name is there')
-        print("Both names correlate, It is probably legit")
+    if (name.lower() in coy_name.lower()) and (address.lower() in coy_address.lower()):
+        print("They correlate, It is probably legit")
     else:
         print("It's probably fake")
 except NameError:
