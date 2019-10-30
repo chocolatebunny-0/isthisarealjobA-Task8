@@ -10,13 +10,25 @@ from bs4 import BeautifulSoup
 
 
 def scrape(company_name):
-    cn = company_name.split()
-    cn = '+'.join(cn)
-    url = f"https://www.nairaland.com/search?q={cn}&board=0"
+    """
+    Scrapes all posts about company_name from nairaland.com
+    :param company_name: str, name of company
+    :return: List of posts about company
+    """
+    stop_words = ['NIG.', 'NIG', '(NIG)', 'NIGERIA', 'LTD', 'LIMITED', 'CO.', 'CO', '&']
+    company_name = company_name.split()
+    company_name = [cn for cn in company_name if cn not in stop_words]
+    company_name = '+'.join(company_name)
+    url = f"https://www.nairaland.com/search?q={company_name}&board=0"
     links = [url]
     posts = []
-    header = {'User-agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36"}
-    scraped = requests.get(url, headers=header)
+    header = {'User-agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                            "Chrome/78.0.3904.70 Safari/537.36"}
+    try:
+        scraped = requests.get(url, headers=header)
+    except ConnectionError as ce:
+        print(ce)
+        return posts
     page = scraped.content
     soup = BeautifulSoup(page, 'html.parser')
     p = soup.find('p')
@@ -29,9 +41,13 @@ def scrape(company_name):
         scraped = requests.get(link, headers=header)
         page = scraped.content
         soup = BeautifulSoup(page, 'html.parser')
-        nar = soup.find_all('div', {'class': "narrow"})
-        for i in range(len(nar)):
-            post = nar[i].text
-            posts.append(post)
+        try:
+            nar = soup.find_all('div', {'class': "narrow"})
+        except (AttributeError, KeyError) as ex:
+            print(ex)
+            return posts
+        if len(nar) >= 1:
+            for i in range(len(nar)):
+                post = nar[i].text
+                posts.append(post)
     return posts
-
