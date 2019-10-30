@@ -148,7 +148,7 @@ def cac_scraper(x, options=None):
 
     except:
         return "Problem loading Chrome driver, check file path"
-    api_key = ''
+    api_key = '5e4a13666ac564d7d353cd69b5fa926f'
     invisible_captcha = True
     client = AnticaptchaClient(api_key)
     url = 'http://publicsearch.cac.gov.ng/comsearch/'
