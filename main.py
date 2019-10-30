@@ -7,6 +7,7 @@ from datetime import datetime
 from werkzeug import secure_filename
 from OCR import convert_image_to_test
 from grammatical_error_counter import error_counter
+from addresschecker import address_checker
 
 
 app = Flask(__name__)
@@ -19,16 +20,23 @@ def index():
         return jsonify(Email=scrape(email))
     return jsonify({'status': 'No email supplied'})
 
-@app.route('/error_counter')
-def counter():
+@app.route('/error_count')
+def error_count():
     msg_body = request.args.get('msg_body', None)
     if msg_body:
         return jsonify(Error_Counter=error_counter(msg_body))
     return jsonify({'status': 'No message body supplied'})
 
-@app.route('/ha')
+@app.route('/check_address')
+def check_address():
+    address = request.args.get('address', None)
+    if address:
+        return jsonify(Check_Address=address_checker(address))
+    return jsonify({'status': 'No address supplied'})
+
+"""@app.route('/ha')
 def indexa():
-    return "loooo"
+    return "loooo" """
 
 
 @app.route('/upload', methods=['POST'])
