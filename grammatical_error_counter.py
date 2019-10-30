@@ -18,4 +18,4 @@ def error_counter(msg_body):
 	else:
 	    return "\n\nDue to low grammatical errors this job is probably real"
 
-print(error_counter("what is good"))
+
