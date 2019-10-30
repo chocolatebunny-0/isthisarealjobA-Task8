@@ -45,10 +45,10 @@ def upload():
  
 @app.route('/match_name_and_address')
 def match_name_and_address():
-    name = request.args.get('name', None)
-    address = request.args.get('address', None)
-    if name:
-        return jsonify(Match_Name_Address=match_address_name(name, address))
+    thename = request.args.get('name', None)
+    theaddress = request.args.get('address', None)
+    if theaddress:
+        return jsonify(Match_Name_Address=match_address_name(thename, theaddress))
     return jsonify({'status': 'Name or address not supplied'})
 
 
