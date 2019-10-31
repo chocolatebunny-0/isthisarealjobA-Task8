@@ -21,7 +21,7 @@ def match_address_name(qname, address):
     y = x['results']
     coy_nameq = "ss"
     coy_address = "gg"
-
+    lola = "oo"
         # keep looping upto lenght of y 
     for i in range(len(y)): 
         # Print name and address of the query and coy_address == address:
