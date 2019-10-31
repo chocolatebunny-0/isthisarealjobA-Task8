@@ -3,7 +3,7 @@ Created by Bilesanmi Faruk
 """
 # importing required modules 
 import requests, json 
-  
+import time  
 # enter your api key here 
 def match_address_name(qname, address):
     global coy_nameq 
@@ -20,7 +20,7 @@ def match_address_name(qname, address):
     #  json format data into python format data 
     x = r.json() 
     y = x['results']
-
+    time.sleep(5)
     #try:
         # keep looping upto lenght of y 
     for i in range(len(y)): 
