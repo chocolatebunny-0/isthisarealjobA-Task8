@@ -10,6 +10,10 @@ from selenium.common.exceptions import NoSuchElementException
 import os
 
 def linkedin_job_search(ln_company_name):
+    headers = requests.utils.default_headers()
+    headers.update({ 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'})
+    req = requests.get(url, headers)
+    soup = BeautifulSoup(req.content, 'html.parser')
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
     options.add_argument("--disable-dev-shm-usage")
@@ -38,7 +42,8 @@ def linkedin_job_search(ln_company_name):
     print(link)
     driver.get(link)
     time.sleep(10)
-    result = driver.find_element_by_xpath("/html/body/div[6]/div[4]/div[3]/div/div[2]/div/div[2]/div/div/div/div/h3").text
+    #result = driver.find_element_by_xpath("/html/body/div[6]/div[4]/div[3]/div/div[2]/div/div[2]/div/div/div/div/h3").text
+    result = soup.find(class_="search-results__total").get_text()
     print (result)
     """result = driver.find_element_by_css_selector("h3.search-results__total").text
     result_one = result.split()
