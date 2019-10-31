@@ -24,11 +24,13 @@ def match_address_name(qname, address):
         # keep looping upto lenght of y 
     for i in range(len(y)): 
         # Print name and address of the query and coy_address == address:
-        coy_name = y[i]['name']
-        coy_address = y[i]['formatted_address']
+        global coy_nameq
+        coy_nameq = y[i]['name'] 
+        global coy_address
+        coy_address = y[i]['formatted_address'] 
         #print(coy_name)
         #print(coy_address) 
-    if (qname.lower() in coy_name.lower()) and (address.lower() in coy_address.lower()):
+    if (qname.lower() in coy_nameq.lower()) and (address.lower() in coy_address.lower()):
         return "They correlate, It is probably legit"
     else:
         return "It's probably fake"
