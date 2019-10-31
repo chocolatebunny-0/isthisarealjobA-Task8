@@ -10,16 +10,16 @@ from selenium.common.exceptions import NoSuchElementException
 import os
 
 def linkedin_job_search(ln_company_name):
-    """options = webdriver.ChromeOptions()
+    options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--headless")
     options.add_argument("--disable-notifications")
     options.add_argument("--no-sandbox")
-    driver = webdriver.Chrome(chrome_options=options)"""
-    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(chrome_options=options)
+    """options = webdriver.ChromeOptions()
     options.add_argument("--disable-notifications")
-    options.add_argument("--headless")
+    options.add_argument("--headless")"""
      
     # to open chrome webbrowser and maximize the window
     driver = webdriver.Chrome(executable_path="data/chromedriver.exe", chrome_options=options)
