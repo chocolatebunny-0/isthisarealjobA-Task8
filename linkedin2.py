@@ -45,7 +45,7 @@ def linkedin_job_search(ln_company_name):
     driver.get(link)
     time.sleep(10)
     #result = driver.find_element_by_tag_name("h3").text
-    result = driver.find_elements_by_partial_link_text("appzone")
+    result = driver.find_elements_by_tag_name("a")
     flex = len(result)
     
     return 'aa '+str(flex)
