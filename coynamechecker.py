@@ -27,14 +27,5 @@ def match_address_name(qname, address):
         # Print name and address of the query and coy_address == address:
         print (y[i]['name'])
 
- """coy_nameq = y[i]['name'] 
-        global coy_address
-        coy_address = y[i]['formatted_address'] 
 
-    if (qname.lower() in coy_nameq.lower()) and (address.lower() in coy_address.lower()):
-        return "They correlate, It is probably legit"
-    else:
-        return "It's probably fake"
-    #except NameError:
-     #   return "wrong input format"  """
 
