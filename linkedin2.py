@@ -12,7 +12,7 @@ import os
 def linkedin_job_search(ln_company_name):
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
-    #options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--headless")
     options.add_argument("--disable-notifications")
     options.add_argument("--no-sandbox")
@@ -26,7 +26,7 @@ def linkedin_job_search(ln_company_name):
     c.click()
     first_part  = 'https://www.linkedin.com/search/results/companies/?keywords='
     driver.get(first_part+ln_company_name)
-    time.sleep(15)
+    time.sleep(10)
     result = driver.find_element_by_tag_name("h3").text
     print ("result is "+result)
     result_one = result.split()
