@@ -44,8 +44,8 @@ def linkedin_job_search(ln_company_name):
     print(link)
     driver.get(link)
     time.sleep(10)
-    #result = driver.find_element_by_xpath("/html/body/div[6]/div[4]/div[3]/div/div[2]/div/div[2]/div/div/div/div/h3").text
-    result = soup.select('h3')
+    result = driver.find_elements_by_tag_name("div")
+
     print ("aaa "+str(len(result)))
     """result = driver.find_element_by_css_selector("h3.search-results__total").text
     result_one = result.split()
