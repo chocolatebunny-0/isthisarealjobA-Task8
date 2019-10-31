@@ -34,7 +34,8 @@ def linkedin_job_search(ln_company_name):
     c = driver.find_element_by_tag_name('button')
     c.click()
     first_part  = 'https://www.linkedin.com/search/results/companies/?keywords='
-    driver.get(first_part+ln_company_name)
+    link = first_part+ln_company_name
+    driver.get(link)
     time.sleep(10)
     result = driver.find_element_by_css_selector("h3.search-results__total").text
     result_one = result.split()
