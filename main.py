@@ -11,6 +11,7 @@ from addresschecker import address_checker
 from coynamechecker import match_address_name
 from cac_leke import name_verification
 from linkedin2 import linkedin_job_search
+from nairaland_senti import*
 
 app = Flask(__name__)
 
@@ -56,6 +57,13 @@ def linkedin_presence():
     presence = request.args.get('ln_company_name', None)
     if presence:
         return jsonify(Verify_on_Linkedin=linkedin_job_search(presence))
+    return jsonify({'status': 'Name not correctly supplied'})
+
+@app.route('/nairaland_sentimental_analysis')
+def nairaland_sentimental_analysis():
+    n_analysis = request.args.get('searchTerm', None)
+    if n_analysis:
+        return jsonify(Verify_on_Nairaland=NScraper(n_analysis))
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/upload', methods=['POST'])
