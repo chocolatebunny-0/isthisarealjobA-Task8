@@ -15,26 +15,29 @@
 ### 7. Building the APIs
 ### 8. Scraping CAC website
 
+
+
 ## Approach 1.
 ### addresschecker.py file in the repo
 
-### About 
+## About 
 ### An address checker script that used google maps app to check the geo code of the address to check if it’s available
 
-### Installation
+## Installation
 ### googlemaps
 
-### Prerequisites
+## Prerequisites
 ### Getting an Apikey form Google Cloud 
 ### Enable Geocoding API
+
 
 ## Approach 2.
 ### linkedin.py file in the repo
 
-### About
+## About
 ### A LinkedIn scraper that scrapers data from LinkedIn 
 
-### Installation and Imports
+## Installation and Imports
 ### import time
 ### import random
 ### from selenium import webdriver
@@ -55,46 +58,49 @@
 
 ### nairaland_aj.py file in the repo
 
-### About
+## About
 ### A nairaland scraper that scrapers data from nairaland
 
-### Installation and Imports
+## Installation and Imports
 ### import requests
 ### from bs4 import BeautifulSoup
+
 
 
 ## Approach 3.
 ### emailverify.py file in the repo
 
-### About
+## About
 ### Checks the validity of an email address To see if it’s fake or not
 
-### Installation and Imports
+## Installation and Imports
 ### from selenium import webdriver
 ### import time
 ### import os
 
 
+
 ## Approach 4.
 ### OCR folder in the repo the folder contains a test picture
 
-### About
+## About
 ### Converts image to string
 
-### Installation and Imports
+## Installation and Imports
 ### from PIL import Image
 ### except ImportError:
 ### import Image
 ### import pytesseract
 
 
+
 ## Approach 8.
 ### cac_john.py in the repo
 
-### About
+## About
 ### Scrape CAC website for company info using anti-captcha API to bypass recaptcha. 
 
-### Installation and Imports
+## Installation and Imports
 ### import time
 ### from selenium import webdriver
 ### import pandas as pd
@@ -105,21 +111,21 @@
 ### import itertools
 ### import argparse
 
-### Note Anticaptcha is a paid service 
+## Note Anticaptcha is a paid service 
 
 ### cac_leke.py files in the repo
 
-### About
+## About
 ### Scrape CAC website for company info using 2captcha API to bypass recaptcha. 
 
-### Installation and Imports
+## Installation and Imports
 ### from selenium import webdriver
 ### import time
 ### from selenium.webdriver import ActionChains
 ### import requests
 ### import os
 
-### Note this search on cac is real time
+## Note this search on cac is real time
 
 
 
