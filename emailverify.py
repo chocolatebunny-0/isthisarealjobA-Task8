@@ -6,12 +6,9 @@ def scrape(email):
     result = []
     #email = input("Enter the email you want to check: ")
     #email = "aaaa"
-    options = webdriver.ChromeOptions()
-    options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--headless")
-    options.add_argument("--disable-notifications")
-    options.add_argument("--no-sandbox")
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
      
     # to open chrome webbrowser and maximize the window
 
@@ -25,7 +22,6 @@ def scrape(email):
     x = browser.find_element_by_id("result-email").text
     result = x
     return result
-#print(x)
 
 if __name__ == "__main__":
     print(scrape())

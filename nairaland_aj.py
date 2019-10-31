@@ -51,3 +51,5 @@ def scrape(company_name):
             print(ex)
         
     return posts
+
+print(scrape("appzone"))

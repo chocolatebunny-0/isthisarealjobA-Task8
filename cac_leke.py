@@ -52,14 +52,14 @@ def name_verification(company_name):
     submit = browser.find_element_by_xpath("//*[@id='content2']/div/form/div[1]/div/input[2]")
     action_chains.move_to_element(submit)
     submit.click()
-    time.sleep(3)
+    time.sleep(10)
     check_table = browser.find_element_by_tag_name('table')
     if (check_table == None):
         return "company records are not found on CAC page"
     else:
         return "company records are found on CAC page" 
 
-#browser.quit()
+
     
 
 

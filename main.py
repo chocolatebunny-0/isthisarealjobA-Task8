@@ -10,7 +10,7 @@ from grammatical_error_counter import error_counter
 from addresschecker import address_checker
 from coynamechecker import match_address_name
 from cac_leke import name_verification
-
+from linkedin2 import linkedin_job_search
 
 app = Flask(__name__)
 
@@ -49,6 +49,13 @@ def check_name():
     check = request.args.get('company_name', None)
     if check:
         return jsonify(Verify_Name=name_verification(check))
+    return jsonify({'status': 'Name not correctly supplied'})
+
+@app.route('/linkedin_presence')
+def linkedin_presence():
+    presence = request.args.get('ln_company_name', None)
+    if presence:
+        return jsonify(Verify_on_Linkedin=linkedin_job_search(presence))
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/upload', methods=['POST'])
