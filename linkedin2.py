@@ -28,8 +28,9 @@ def linkedin_job_search(ln_company_name):
     driver.get(first_part+ln_company_name)
     time.sleep(15)
     result = driver.find_element_by_tag_name("h3").text
-    result_one = result.split()
-    print (result_one)
+    print ("result is "+result)
+    #result_one = result.split()
+    #print (result_one)
     """
     result_two = int(result_one[1])
     if (result_two > 2):
