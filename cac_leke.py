@@ -8,6 +8,7 @@ from selenium import webdriver
 import time
 from selenium.webdriver import ActionChains
 import requests
+import os
 
 
 
@@ -17,7 +18,11 @@ def name_verification(company_name):
     options = webdriver.ChromeOptions()
     options.add_argument('--disable-notifications')
     options.add_argument("--headless")
-    browser = webdriver.Chrome(executable_path ='data/chromedriver.exe',chrome_options = options)
+    options = webdriver.ChromeOptions()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
+    browser = webdriver.Chrome(chrome_options=options)
     browser.get("https://publicsearch.cac.gov.ng/")
     time.sleep(3)
     browser.find_element_by_tag_name('input').send_keys(company_name)
