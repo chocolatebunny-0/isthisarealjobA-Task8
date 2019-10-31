@@ -27,7 +27,7 @@ def match_address_name(qname, address):
         # Print name and address of the query and coy_address == address:
         print (y[i]['name'])
 
- """       coy_nameq = y[i]['name'] 
+ """coy_nameq = y[i]['name'] 
         global coy_address
         coy_address = y[i]['formatted_address'] 
 
