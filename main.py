@@ -9,6 +9,7 @@ from OCR import convert_image_to_test
 from grammatical_error_counter import error_counter
 from addresschecker import address_checker
 from coynamechecker import match_address_name
+from cac_leke import name_verification
 
 
 app = Flask(__name__)
@@ -35,6 +36,20 @@ def check_address():
         return jsonify(Check_Address=address_checker(address))
     return jsonify({'status': 'No address supplied'})
 
+@app.route('/match_name_and_address')
+def match_name_and_address():
+    thename = request.args.get('name', None)
+    theaddress = request.args.get('address', None)
+    if theaddress:
+        return jsonify(Match_Name_Address=match_address_name(thename, theaddress))
+    return jsonify({'status': 'Name or address not supplied'})
+
+@app.route('/check_name')
+def check_name():
+    check = request.args.get('company_name', None)
+    if check:
+        return jsonify(Verify_Name=name_verification(check))
+    return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -43,13 +58,7 @@ def upload():
     f.save(filename)
     return convert_image_to_test(filename)
  
-@app.route('/match_name_and_address')
-def match_name_and_address():
-    thename = request.args.get('name', None)
-    theaddress = request.args.get('address', None)
-    if theaddress:
-        return jsonify(Match_Name_Address=match_address_name(thename, theaddress))
-    return jsonify({'status': 'Name or address not supplied'})
+
 
 
 if __name__ == "__main__":

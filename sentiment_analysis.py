@@ -16,12 +16,12 @@ def get_predictions(input_text, classifier):
     pred_sentiment = prob_dist.max()
     print("Predicted sentiment:", pred_sentiment)
     print("Probability:", round(prob_dist.prob(pred_sentiment), 2))
-    return pred_sentiment
+    return str(pred_sentiment)+" "+str(round(prob_dist.prob(pred_sentiment), 2))
 
 
 filename = "data/classifier.sav"
 loaded_class = joblib.load(filename)
 
-text = 'very bad company, did not pay us on time,' \
-       ' very hostile environment, didnt enjoy my time there one bit, terrible experience'
+#text = 'very bad company, did not pay us on time,' \
+#       ' very hostile environment, didnt enjoy my time there one bit, terrible experience'
 get_predictions(text, loaded_class)
