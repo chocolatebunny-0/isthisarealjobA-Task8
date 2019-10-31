@@ -12,7 +12,10 @@ import os
 def linkedin_job_search(ln_company_name):
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
+    #options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--headless")
     options.add_argument("--disable-notifications")
+    options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(chrome_options=options)
     driver.get('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
     a = driver.find_element_by_id('username')
@@ -28,6 +31,7 @@ def linkedin_job_search(ln_company_name):
     print ("result is "+result)
     result_one = result.split()
     print (result_one)
+    
     result_two = int(result_one[1])
     if (result_two > 2):
         return "The company is on Linkedin and analysis shows it is a big company"
