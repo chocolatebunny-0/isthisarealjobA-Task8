@@ -19,7 +19,8 @@ def match_address_name(qname, address):
     #  json format data into python format data 
     x = r.json() 
     y = x['results']
-
+    coy_nameq = "ss"
+    coy_address = "gg"
     try:
             # keep looping upto lenght of y 
         for i in range(len(y)): 
