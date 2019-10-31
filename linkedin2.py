@@ -22,7 +22,7 @@ def linkedin_job_search(ln_company_name):
     options.add_argument("--headless")"""
      
     # to open chrome webbrowser and maximize the window
-    driver = webdriver.Chrome(executable_path="data/chromedriver.exe", chrome_options=options)
+    #driver = webdriver.Chrome(executable_path="data/chromedriver.exe", chrome_options=options)
     driver.maximize_window()
      
     #Implicit Wait when element is taking time to load
