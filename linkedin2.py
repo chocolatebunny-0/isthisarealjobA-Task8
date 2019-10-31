@@ -7,6 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
+from bs4 import BeautifulSoup
 import os
 
 def linkedin_job_search(ln_company_name):
