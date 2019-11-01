@@ -11,6 +11,8 @@ import os
 
 def linkedin_job_search(ln_company_name):
     options = webdriver.ChromeOptions()
+    PROXY = "105.112.8.53:3128" # IP:PORT or HOST:PORT
+    options.add_argument('--proxy-server=%s' % PROXY)
     options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--headless")
