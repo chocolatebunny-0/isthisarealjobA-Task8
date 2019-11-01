@@ -7,15 +7,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
-from bs4 import BeautifulSoup
 import os
 
 def linkedin_job_search(ln_company_name):
-    headers = requests.utils.default_headers()
-    headers.update({ 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'})
-    url = "https://www.linkedin.com/search/results/companies/?keywords=appzone"
-    req = requests.get(url, headers)
-    soup = BeautifulSoup(req.content, 'html.parser')
     options = webdriver.ChromeOptions()
     options.binary_location = os.environ.get("GOOGLE_CHROME_BINARY")
     options.add_argument("--disable-dev-shm-usage")
@@ -44,8 +38,10 @@ def linkedin_job_search(ln_company_name):
     print(link)
     driver.get(link)
     time.sleep(10)
+    check = driver.get(current_url)
+    print("check is "+check)
     #result = driver.find_element_by_tag_name("h3").text
-    result = driver.find_element_by_css_selector("h3.search-results__total").text
+    """result = driver.find_element_by_css_selector("h3.search-results__total").text
     result_one = result.split()
     result_two = int(result_one[1])
     if (result_two > 2):
@@ -53,7 +49,7 @@ def linkedin_job_search(ln_company_name):
     elif (result_two == 1 or result_two == 2):
         return "The company is on Linkedin and analysis shows it is a small company"
     else:
-        return "The company is not on Linkedin it mostly likely does not exist" 
+        return "The company is not on Linkedin it mostly likely does not exist" """
 
 
 
