@@ -38,7 +38,7 @@ def linkedin_job_search(ln_company_name):
     print(link)
     driver.get(link)
     time.sleep(10)
-    check = driver.get(current_url)
+    check = (driver.current_url)
     print("check is "+check)
     #result = driver.find_element_by_tag_name("h3").text
     """result = driver.find_element_by_css_selector("h3.search-results__total").text
