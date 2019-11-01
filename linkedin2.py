@@ -41,9 +41,9 @@ def linkedin_job_search(ln_company_name):
     driver.get(link)
     time.sleep(10)
     check = (driver.current_url)
-    return "check is "+str(check)
+    #return "check is "+str(check)
     #result = driver.find_element_by_tag_name("h3").text
-    """result = driver.find_element_by_css_selector("h3.search-results__total").text
+    result = driver.find_element_by_css_selector("h3.search-results__total").text
     result_one = result.split()
     result_two = int(result_one[1])
     if (result_two > 2):
@@ -51,7 +51,7 @@ def linkedin_job_search(ln_company_name):
     elif (result_two == 1 or result_two == 2):
         return "The company is on Linkedin and analysis shows it is a small company"
     else:
-        return "The company is not on Linkedin it mostly likely does not exist" """
+        return "The company is not on Linkedin it mostly likely does not exist" 
 
 
 
