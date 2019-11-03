@@ -73,7 +73,7 @@ def upload():
     f.save(filename)
     return convert_image_to_test(filename)
 
-@app.route('/')
+@app.route('/full')
 def check_job():
     
     coy_name = request.args.get('coy_name', None)
