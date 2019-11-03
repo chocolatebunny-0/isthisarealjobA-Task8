@@ -72,7 +72,63 @@ def upload():
     filename = os.path.join('files', secure_filename(str(datetime.now()) + '.jpg'))
     f.save(filename)
     return convert_image_to_test(filename)
- 
+
+@app.route('/')
+def check_job():
+    
+    coy_name = request.args.get('coy_name', None)
+    address = request.args.get('address', None)
+    msg_body = request.args.get('body', None)
+    email = request.args.get('email', None)
+    
+    global confidence
+    confidence = 0
+    
+    if "is OK" in scrape(email):
+        confidence += 10
+    else:
+        confidence = confidence
+    
+    print(confidence, " done")
+    
+    if "real" in errorcounter(msg_body):  
+        confidence += 15
+    else:
+        confidence = confidence
+        
+    print(confidence, " done") 
+    
+    if address_checker(address) == "available":
+        confidence += 10
+    else:
+        confidence = confidence
+
+    print(confidence, " done")
+
+    if linkedin_job_search(coy_name) == "The company is on Linkedin and analysis shows it is a big company":
+        confidence += 20
+    else:
+        confidence = confidence
+
+    print(confidence, " done")
+
+    if "be real" in NScraper(coy_name):
+        confidence += 15
+    elif "conclude on" in NScraper(coy_name):
+        confidence += 7
+    else:
+        confidence = confidence
+
+    print(confidence, " done")
+
+    if name_verification(coy_name) == "company records are found on CAC page":
+        confidence += 30
+    else:
+        confidence = 0
+
+    print(confidence, " done")
+
+    return jsonify(Confidence=str(confidence)+"%")
 
 
 
