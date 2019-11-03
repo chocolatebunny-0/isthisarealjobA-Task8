@@ -16,6 +16,47 @@ from nairaland_senti import*
 app = Flask(__name__)
 
 
+@app.route('/', methods=['POST'])
+def check_job():
+    details = request.get_json(force=True)
+   try:
+       coy_name = details['company name']
+       address = details['address']
+       msg_body = details['body']
+    except KeyError:
+        err = "Please check your input"
+        return jsonify(err)
+    confidence = 0
+    if "real" in errorcounter(msg_body):
+        confidence += 1
+    else:
+        confidence = confidence
+        
+    if address_checker(address) == "available":
+        confidence += 1
+    else:
+        confidence = confidence
+        
+    if linkedin_job_search(coy_name) == "The company is on Linkedin and analysis shows it is a big company":
+    confidence += 1
+    else:
+        confidence = confidence
+        
+    if "real" in NScraper(coy_name).lower():
+        confidence += 1
+    elif "conclude" in NScraper(coy_name).lower():
+        confidence += 0.5
+    else:
+        confidence = confidence
+        
+    if name_verification(coy_name) == "company records are found on CAC page":
+        confidence += 2
+    else:
+        confidence = 0
+    final = (confidence/6) *100
+    return jsonify(Confidence=final+"%")
+
+"""
 @app.route('/')
 def index():
     email = request.args.get('email', None)
@@ -72,7 +113,7 @@ def upload():
     filename = os.path.join('files', secure_filename(str(datetime.now()) + '.jpg'))
     f.save(filename)
     return convert_image_to_test(filename)
- 
+ """
 
 
 
