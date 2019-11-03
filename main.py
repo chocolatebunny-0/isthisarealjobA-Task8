@@ -91,7 +91,7 @@ def check_job():
     
     print(confidence, " done")
     
-    if "real" in errorcounter(msg_body):  
+    if "real" in error_counter(msg_body):  
         confidence += 15
     else:
         confidence = confidence
