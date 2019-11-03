@@ -29,7 +29,7 @@ def linkedin_job_search(ln_company_name):
      
     #Implicit Wait when element is taking time to load
     driver.get('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
-    time.sleep(10)
+    time.sleep(3)
     a = driver.find_element_by_id('username')
     a.send_keys('lexmill99@gmail.com')
     b = driver.find_element_by_id('password')
