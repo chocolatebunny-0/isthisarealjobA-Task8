@@ -133,7 +133,7 @@ def check_job():
 
 #backup
 
-@app.route('/l')
+@app.route('/el')
 def index():
     email = request.args.get('email', None)
     if email:
