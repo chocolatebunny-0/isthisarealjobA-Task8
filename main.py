@@ -75,10 +75,10 @@ def upload():
 @app.route('/full', methods=['POST'])
 def check_job():
     
-    coy_name = request.form('coy_name', None)
-    address = request.form('address', None)
-    msg_body = request.form('body', None)
-    email = request.form('email', None)
+    coy_name = request.form['coy_name']
+    address = request.form['address']
+    msg_body = request.form['body']
+    email = request.form['email']
     
     global confidence
     confidence = 0
