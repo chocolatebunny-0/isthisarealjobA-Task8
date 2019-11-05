@@ -15,28 +15,28 @@ from nairaland_senti import*
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def index():
     email = request.form('email', None)
     if email:
         return jsonify(Email=scrape(email))
     return jsonify({'status': 'No email supplied'})
 
-@app.route('/error_count')
+@app.route('/error_count', methods=['POST'])
 def error_count():
     msg_body = request.form('msg_body', None)
     if msg_body:
         return jsonify(Error_Counter=error_counter(msg_body))
     return jsonify({'status': 'No message body supplied'})
 
-@app.route('/check_address')
+@app.route('/check_address', methods=['POST'])
 def check_address():
     address = request.form('address', None)
     if address:
         return jsonify(Check_Address=address_checker(address))
     return jsonify({'status': 'No address supplied'})
 
-@app.route('/match_name_and_address')
+@app.route('/match_name_and_address', methods=['POST'])
 def match_name_and_address():
     thename = request.form('name', None)
     theaddress = request.form('address', None)
@@ -44,21 +44,21 @@ def match_name_and_address():
         return jsonify(Match_Name_Address=match_address_name(thename, theaddress))
     return jsonify({'status': 'Name or address not supplied'})
 
-@app.route('/check_name')
+@app.route('/check_name', methods=['POST'])
 def check_name():
     check = request.form('company_name', None)
     if check:
         return jsonify(Verify_Name=name_verification(check))
     return jsonify({'status': 'Name not correctly supplied'})
 
-@app.route('/linkedin_presence')
+@app.route('/linkedin_presence', methods=['POST'])
 def linkedin_presence():
     presence = request.form('ln_company_name', None)
     if presence:
         return jsonify(Verify_on_Linkedin=linkedin_job_search(presence))
     return jsonify({'status': 'Name not correctly supplied'})
 
-@app.route('/nairaland_sentimental_analysis')
+@app.route('/nairaland_sentimental_analysis', methods=['POST'])
 def nairaland_sentimental_analysis():
     n_analysis = request.form('searchTerm', None)
     if n_analysis:
@@ -72,7 +72,7 @@ def upload():
     f.save(filename)
     return convert_image_to_test(filename)
 
-@app.route('/full')
+@app.route('/full', methods=['POST'])
 def check_job():
     
     coy_name = request.form('coy_name', None)
