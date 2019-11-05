@@ -134,28 +134,28 @@ def check_job():
 #backup
 
 @app.route('/el')
-def index():
+def index1():
     email = request.args.get('email', None)
     if email:
         return jsonify(Email=scrape(email))
     return jsonify({'status': 'No email supplied'})
 
 @app.route('/error_count1')
-def error_count():
+def error_count1():
     msg_body = request.args.get('msg_body', None)
     if msg_body:
         return jsonify(Error_Counter=error_counter(msg_body))
     return jsonify({'status': 'No message body supplied'})
 
 @app.route('/check_address1')
-def check_address():
+def check_address1():
     address = request.args.get('address', None)
     if address:
         return jsonify(Check_Address=address_checker(address))
     return jsonify({'status': 'No address supplied'})
 
 @app.route('/match_name_and_address1')
-def match_name_and_address():
+def match_name_and_address1():
     thename = request.args.get('name', None)
     theaddress = request.args.get('address', None)
     if theaddress:
@@ -163,35 +163,35 @@ def match_name_and_address():
     return jsonify({'status': 'Name or address not supplied'})
 
 @app.route('/check_name1')
-def check_name():
+def check_name1():
     check = request.args.get('company_name', None)
     if check:
         return jsonify(Verify_Name=name_verification(check))
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/linkedin_presence1')
-def linkedin_presence():
+def linkedin_presence1():
     presence = request.args.get('ln_company_name', None)
     if presence:
         return jsonify(Verify_on_Linkedin=linkedin_job_search(presence))
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/nairaland_sentimental_analysis1')
-def nairaland_sentimental_analysis():
+def nairaland_sentimental_analysis1():
     n_analysis = request.args.get('searchTerm', None)
     if n_analysis:
         return jsonify(Verify_on_Nairaland=NScraper(n_analysis))
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/upload1', methods=['POST'])
-def upload():
+def upload1():
     f = request.files['file']
     filename = os.path.join('files', secure_filename(str(datetime.now()) + '.jpg'))
     f.save(filename)
     return convert_image_to_test(filename)
 
 @app.route('/full1')
-def check_job():
+def check_job1():
     
     coy_name = request.args.get('coy_name', None)
     address = request.args.get('address', None)
