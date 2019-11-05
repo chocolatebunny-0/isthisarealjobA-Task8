@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def index():
-    email = request.form('email', None)
+    email = request.data('email', None)
     if email:
         return jsonify(Email=scrape(email))
     return jsonify({'status': 'No email supplied'})
