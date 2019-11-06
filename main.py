@@ -21,7 +21,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/', methods=['POST'])
-@cross_origin()
+
 def index():
     email = request.form['email']
     if email:
@@ -29,7 +29,7 @@ def index():
     return jsonify({'status': 'No email supplied'})
 
 @app.route('/error_count', methods=['POST'])
-@cross_origin()
+
 def error_count():
     msg_body = request.form['msg_body']
     if msg_body:
@@ -37,7 +37,7 @@ def error_count():
     return jsonify({'status': 'No message body supplied'})
 
 @app.route('/check_address', methods=['POST'])
-@cross_origin()
+
 def check_address():
     address = request.form['address']
     if address:
@@ -45,7 +45,7 @@ def check_address():
     return jsonify({'status': 'No address supplied'})
 
 @app.route('/match_name_and_address', methods=['POST'])
-@cross_origin()
+
 def match_name_and_address():
     thename = request.form['name']
     theaddress = request.form['address']
@@ -54,7 +54,7 @@ def match_name_and_address():
     return jsonify({'status': 'Name or address not supplied'})
 
 @app.route('/check_name', methods=['POST'])
-@cross_origin()
+
 def check_name():
     check = request.form['company_name']
     if check:
@@ -62,7 +62,7 @@ def check_name():
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/linkedin_presence', methods=['POST'])
-@cross_origin()
+
 def linkedin_presence():
     presence = request.form['ln_company_name']
     if presence:
@@ -70,7 +70,7 @@ def linkedin_presence():
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/nairaland_sentimental_analysis', methods=['POST'])
-@cross_origin()
+
 def nairaland_sentimental_analysis():
     n_analysis = request.form['searchTerm']
     if n_analysis:
@@ -78,7 +78,7 @@ def nairaland_sentimental_analysis():
     return jsonify({'status': 'Name not correctly supplied'})
 
 @app.route('/upload', methods=['POST'])
-@cross_origin()
+
 def upload():
     f = request.files['file']
     filename = os.path.join('files', secure_filename(str(datetime.now()) + '.jpg'))
@@ -86,7 +86,7 @@ def upload():
     return convert_image_to_test(filename)
 
 @app.route('/full', methods=['POST'])
-@cross_origin()
+
 def check_job():
     
     coy_name = request.form['coy_name']
