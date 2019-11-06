@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask_cors import CORS
+from Flask_cors import CORS
 from flask import jsonify
 from emailverify import scrape
 from flask import request
