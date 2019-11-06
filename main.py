@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-#from flask_cors import CORS
+from flask_cors import CORS
 from flask import jsonify
 from emailverify import scrape
 from flask import request
@@ -16,7 +16,7 @@ from nairaland_senti import*
 
 
 
-#CORS(app)
+CORS(app)
 app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
