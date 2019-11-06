@@ -92,20 +92,20 @@ def check_job():
     coy_name = request.form['coy_name']
     address = request.form['address']
     msg_body = request.form['body']
-    email = request.form['email']
+    #email = request.form['email']
     
     global confidence
     confidence = 0
     
-    if "is OK" in scrape(email):
-        confidence += 10
-    else:
-        confidence = confidence
+    #if "is OK" in scrape(email):
+        #confidence += 10
+    #else:
+        #confidence = confidence
     
     print(confidence, " done")
     
     if "real" in error_counter(msg_body):  
-        confidence += 15
+        confidence += 25
     else:
         confidence = confidence
         
