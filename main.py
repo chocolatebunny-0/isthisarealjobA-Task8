@@ -16,8 +16,9 @@ from nairaland_senti import*
 
 
 
-CORS(app)
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=['POST'])
 def index():
