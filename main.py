@@ -118,12 +118,12 @@ def check_job():
 
     print(confidence, " done")
 
-    #if linkedin_job_search(coy_name) == "The company is on Linkedin and analysis shows it is a big company":
-        #confidence += 20
-    #else:
-        #confidence = confidence
+    if linkedin_job_search(coy_name) == "The company is on Linkedin and analysis shows it is a big company":
+        confidence += 20
+    else:
+        confidence = confidence
 
-    #print(confidence, " done")
+    print(confidence, " done")
 
     if "be real" in NScraper(coy_name):
         confidence += 15
